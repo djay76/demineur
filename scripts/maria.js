@@ -4,11 +4,15 @@ $('document').ready(function(){
     var context = canvas.getContext('2d');
 
       context.beginPath();
-      context.rect(60, 60, 100, 100);
+      context.rect(60, 60, 50, 50);
       context.fillStyle = 'gray';
       context.fill();
       context.lineWidth = 1;
       context.strokeStyle = 'black';
       context.stroke();
-      context.fillText('<i class="fa fa-bomb fa-2x"></i>', 10, 10)
+      var mine = new Image();
+	mine.onload = function(){
+		context.drawImage(mine,70,70);
+	}
+	mine.src = "http://localhost/demineur/img/mine-noire.png";
 });

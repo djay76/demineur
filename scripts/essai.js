@@ -6,6 +6,7 @@ $(document).ready(function(){
 	context.rect(50, 50, 50, 50);
 	context.fillStyle = "red";
 	context.fill();
+	
 	var flag = new Image();
 	flag.onload = function(){
 		context.drawImage(flag,50,50);

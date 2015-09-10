@@ -6,12 +6,12 @@ $(document).ready(function(){
 	context.rect(50, 50, 50, 50);
 	context.fillStyle = "red";
 	context.fill();
-	
-	var flag = new Image();
-	flag.onload = function(){
-		context.drawImage(flag,50,50);
+
+	var drapeau = new Image();
+	drapeau.onload = function(){
+		context.drawImage(drapeau,50,50);
 	}
-	flag.src = "http://localhost/demineur/img/drapeau.png";
+	drapeau.src = "http://localhost/demineur/img/drapeau.png";
 
 	
 });

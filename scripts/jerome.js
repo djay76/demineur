@@ -13,22 +13,9 @@ $(document).ready(function(){
         renderer.render(stage);
     }
 
-    //Création d'une case
-    var graph = new PIXI.Graphics();
-    graph.beginFill(0xFF6000, 1);
-    graph.lineStyle(1,0xffffff,1);
-    var carre = graph.drawRect(0,0,50,50);
-    stage.addChild(carre);
-
-    //Création d'une image dans la case
-    var drapeau = new PIXI.Sprite.fromImage('img/drapeau.png');
-    // center the sprites anchor point
-    drapeau.anchor.x = 0.5;
-    drapeau.anchor.y = 0.5; 
-    // move the sprite t the center of the screen
-    drapeau.position.x = 25;
-    drapeau.position.y = 25;
-    carre.addChild(drapeau);
-
+    var cellule = new Cell(200, 200, 0x00FF00);
+    cellule.createImage('img/mine-noire.png');
+    cellule.createText(4,0xffffff);
+    stage.addChild(cellule.carre);
 });
 

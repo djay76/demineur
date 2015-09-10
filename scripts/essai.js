@@ -10,7 +10,8 @@ $(document).ready(function(){
 	flag.onload = function(){
 		context.drawImage(flag,50,50);
 	}
-	flag.src = "http://localhost/demineur/img/flag.png";
+	flag.src = "http://localhost/demineur/img/drapeau.png";
+
 	
 });
 

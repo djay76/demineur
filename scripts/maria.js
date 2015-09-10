@@ -1,18 +1,21 @@
-$('document').ready(function(){
+$(document).ready(function(){
+	//Initialisation de PIXI
+	var stage = new PIXI.Container();
+	var renderer = PIXI.autoDetectRenderer(500,500);
+	renderer.backgroundColor = 0x888888;
+	var content = document.getElementById("container");
+	container.appendChild(renderer.view);
+	
+	requestAnimationFrame(animate);
+    function animate() {
+    	requestAnimationFrame( animate );
+        // render the stage   
+        renderer.render(stage);
+    }
 
- // create an new instance of a pixi stage
- var stage = new PIXI.Stage(0x66FF99);
- 
-// create a renderer instance.
-var renderer = PIXI.autoDetectRenderer(400, 300);
 
-// add the renderer view element to the DOM
-document.body.appendChild(renderer.view);
-
-var container = new PIXI.Container();
-alpha=0.4;
-
-var carre = new PIXI.Rectangle(x, y, 50, 50);
-container.addChild(carre);
+  var taille=100;
+  var carre= new PIXI.Graphics();
+  
 
 });

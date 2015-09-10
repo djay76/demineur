@@ -10,4 +10,5 @@ $('document').ready(function(){
       context.lineWidth = 1;
       context.strokeStyle = 'black';
       context.stroke();
-};
+      context.fillText('<i class="fa fa-bomb fa-2x"></i>', 10, 10)
+});

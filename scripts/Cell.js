@@ -5,6 +5,7 @@ function Cell(x,y,couleur, numero)
 	this.vertical = y;
 	this.couleur = couleur;
 	this.numero = numero;
+	this.indice = 0;
 	this.carre;
 	this.createCell();
 	// this.createImage('img/mine-noire.png');
@@ -34,9 +35,9 @@ Cell.prototype =
 	},
 
 	//Création d'un texte dans la case
-	createText: function(nombre, couleur)
+	createText: function(couleur)
  	{
- 		var text = new PIXI.Text(nombre ,{font: "30px Arial", fill: couleur});
+ 		var text = new PIXI.Text(this.indice ,{font: "30px Arial", fill: couleur});
  	    text.anchor.x = 0.5;
  	    text.anchor.y = 0.5;
  	    text.position.x = this.horizontal + 25;

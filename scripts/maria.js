@@ -29,8 +29,11 @@ while(i<ligne){
 	{
 		//Création d'une case
 		var cellule = new Cell(x, y, 0x00FF00, numero);
-	    cellule.createImage('img/mine-noire.png');
-	    cellule.createText(4,0xffffff);
+		if (table.indexOf(numero) !== -1)
+		{
+		    cellule.createImage('img/mine-noire.png');
+		}
+	    // cellule.createText(this.indice,couleur);
 	    stage.addChild(cellule.carre);
         grille[numero] = cellule;
 	  	numero++;
@@ -42,5 +45,8 @@ while(i<ligne){
 	x=x+50;
 	i++;
 }
+
+
+// function destroy()
 
 });

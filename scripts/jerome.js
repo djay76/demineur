@@ -32,7 +32,6 @@ $(document).ready(function(){
 			ord = (nbr-1)%10;
 			abs = ((nbr-1)%100 - ord)/10;
 			stock[i] = [abs, ord];
-	        console.log(stock[i])
 			i++;
 		}
 	}
@@ -90,43 +89,43 @@ $(document).ready(function(){
 		   	{
 		   		var nbr = (abs-1)*10+ord+1;
 		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
+		   			grille[nbr].indice++;
 		   	}
 		   	if ((abs-1)>=0 && (ord+1)<=9)
 		   	{
 		   		var nbr = (abs-1)*10+(ord+1)+1;
 		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
+		   			grille[nbr].indice++;
 		   	}
 		   	if (abs>=0 && (ord-1)>=0)
 		   	{
 		   		var nbr = abs*10+(ord-1)+1;
 		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
+		   			grille[nbr].indice++;
 		   	}	
 		   	if (abs>=0 && (ord+1)<=9)
 		   	{
 		   		var nbr = abs*10+(ord+1)+1;
 		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
+		   			grille[nbr].indice++;
 		   	}
 		   	if ((abs+1)<=9 && (ord-1)>=0)
 		   	{
 		   		var nbr = (abs+1)*10+(ord-1)+1;
 		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
+		   			grille[nbr].indice++;
 		   	}
 		   	if ((abs+1)<=9 && ord>=0)
 		   	{
 		   		var nbr = (abs+1)*10+ord+1;
 		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
+		   			grille[nbr].indice++;
 		   	}
 		   	if ((abs+1)<=9 && (ord+1)<=9)
 		   	{
 		   		var nbr = (abs+1)*10+(ord+1)+1;
 		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
+		   			grille[nbr].indice++;
 		   	}
 		}
 	  	numero++;
@@ -153,7 +152,6 @@ $(document).ready(function(){
 	var surcouche = [];
 
 	while(i<ligne){
-
 		while(j<ligne)
 		{
 			//Création d'une case

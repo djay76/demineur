@@ -46,6 +46,7 @@ Cell.prototype =
  	    this.carre.addChild(text);
  	},
 
+
  	toggleImage : function(image)
 	{
 		if (image.visible)
@@ -56,12 +57,13 @@ Cell.prototype =
 			image.visible = true;
 	},
 
- 	createSurcouche : function()
-	{
-		var self = this;
+ 	
+ 	createSurcouche: function(couleur)
+ 	{
+ 		var self = this;
 		var graph = new PIXI.Graphics();
-	    graph.beginFill(0x777777, 1);
-	    graph.lineStyle(1,0xffffff,1);
+	    graph.beginFill(couleur, 1);
+	  	graph.lineStyle(1,0xffffff,1);
 	    this.surcouche = graph.drawRect(this.horizontal,this.vertical,50,50);
 	    this.carre.addChild(this.surcouche);
 
@@ -96,6 +98,4 @@ Cell.prototype =
 	    	}
 	    };
 	}
-
-	
 }

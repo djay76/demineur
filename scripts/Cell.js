@@ -9,6 +9,7 @@ function Cell(x,y,couleur,numero)
 	this.abs=((numero-1)%100-this.ord)/10;
 	this.indice = 0;
 	this.carre;
+	this.surcouche;
 	this.createCell();
 	// this.createImage('img/mine-noire.png');
 	// this.createText(4, 0xFF0000);
@@ -26,7 +27,7 @@ Cell.prototype =
 	},
 
 	//Création d'une image dans la case
-	createImage: function(url)
+	createImage : function(url)
 	{
 		var image = new PIXI.Sprite.fromImage(url);
 	    image.anchor.x = 0.5;
@@ -37,7 +38,7 @@ Cell.prototype =
 	},
 
 	//Création d'un texte dans la case
-	createText: function(nombre, couleur)
+	createText : function(nombre, couleur)
  	{
  		var text = new PIXI.Text(nombre ,{font: "30px Arial", fill: couleur});
  	    text.anchor.x = 0.5;
@@ -45,24 +46,47 @@ Cell.prototype =
  	    text.position.x = this.horizontal + 25;
  	    text.position.y = this.vertical + 25;
  	    this.carre.addChild(text);
- 	}
+ 	},
 
  	createSurcouche: function(couleur)
  	{
- 		var surcouche = new PIXI.Graphics();
-	    surcouche.beginFill(this.couleur, 1);
-	  	surcouche.lineStyle(1,couleur,1);
+ 		var self = this;
+		var graph = new PIXI.Graphics();
+	    graph.beginFill(couleur, 1);
+	  	graph.lineStyle(1,0xffffff,1);
 	    this.surcouche = graph.drawRect(this.horizontal,this.vertical,50,50);
-	    this.carre.addChild(surcouche);
+	    this.carre.addChild(this.surcouche);
 	    this.surcouche.interactive = true;
-	    this.surcouche.mousedown = function()
+	    this.surcouche.mousedown = function(info)
 	    {
-	    	if(event.which == 1){
-	    		alert('clic du bouton gauche');
-	    	}
-	    	else if ( event.which == 3 ){
-		        alert('clic du bouton droit'); 
-		    }
+	    	if(info.data.originalEvent.which == 1)
+	            {
+	            	
+		    	}
+		    		
+		    	}
+		    	else if ( info.data.originalEvent.which == 2 || ctrlKey == true )
+		    	{
+				   
+			    }
 	    };
  	}
-}
+ }
+// =======
+//  	},
+
+//  	createSurcouche : function()
+// 	{
+// 		var self = this;
+// 		var graph = new PIXI.Graphics();
+// 	    graph.beginFill(0x777777, 1);
+// 	    graph.lineStyle(1,0xffffff,1);
+// 	    this.surcouche = graph.drawRect(this.horizontal,this.vertical,50,50);
+// 	    this.carre.addChild(this.surcouche);
+// 	    this.surcouche.interactive = true;
+// 	    this.surcouche.mousedown = function()
+// 	    {
+// 	    	self.surcouche.visible = false;
+// 	    };
+// 	}
+// >>>>>>> 0a04887b47128b280ad1201beaaeab918370ef84

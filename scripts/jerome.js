@@ -13,6 +13,7 @@ while (i<10)
 	if (table.indexOf(nbr) === -1)
 	{
 		table[i] = nbr;
+		ord = (nbr-1)%10;
 		abs = ((nbr-1)%100 - ord)/10;
 		stock[i] = [abs, ord];
 		i++;

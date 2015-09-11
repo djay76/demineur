@@ -21,6 +21,7 @@ $(document).ready(function(){
   var y=0;
   var i=0;
   var j=0;
+  var grille = [];
 
 while(i<ligne){
 
@@ -31,20 +32,15 @@ while(i<ligne){
 	    cellule.createImage('img/mine-noire.png');
 	    cellule.createText(4,0xffffff);
 	    stage.addChild(cellule.carre);
+        grille[numero] = cellule;
 	  	numero++;
 		y=y+50;
 		j++	;
-		console.log('j:'+j);
-		console.log('y:'+y);
-
 	}
 	y = 0;
 	j = 0;
 	x=x+50;
 	i++;
-	console.log('i:'+i);
-	console.log('x:'+x);
 }
-   
 
 });

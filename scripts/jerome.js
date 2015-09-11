@@ -70,6 +70,7 @@ $(document).ready(function(){
 		i++;
 	}
 
+	//Incrémentation des numéros indice
 	var numero=1;
 	while(numero<=taille)
 	{
@@ -131,6 +132,7 @@ $(document).ready(function(){
 	  	numero++;
 	}
 
+	//Remplissage des numéros indice
 	var numero=1;
 	while(numero<=taille)
 	{
@@ -140,6 +142,32 @@ $(document).ready(function(){
 			grille[numero].createText(indice, 0x333333);
 		}
 		numero++;
+	}
+
+	//Surcouche
+	var numero=1;
+	var x=0;
+	var y=0;
+	var i=0;
+	var j=0;
+	var surcouche = [];
+
+	while(i<ligne){
+
+		while(j<ligne)
+		{
+			//Création d'une case
+			var cellule = new Cell(x, y, 0x888888, numero);
+		    stage.addChild(cellule.carre);
+	        surcouche[numero] = cellule;
+		  	numero++;
+			y=y+50;
+			j++	;
+		}
+		y = 0;
+		j = 0;
+		x=x+50;
+		i++;
 	}
 
 });

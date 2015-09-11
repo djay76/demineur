@@ -10,18 +10,17 @@ var table = [];
 while (i<10)
 {
 	var nbr = getRandomInt();
-	if (stock.indexOf(nbr) === -1)
+	if (table.indexOf(nbr) === -1)
 	{
 
-		stock[i] = nbr;
-		console.log(stock[i]);
+		table[i] = nbr;
 		ord = (nbr-1)%10;
 		abs = ((nbr-1)%100 - ord)/10;
-		table[i] = [abs, ord];
-		console.log(table[i]);
+		stock[i] = [abs, ord];
+        console.log(stock[i])
 		i++;
 	}
-    console.log(stock[abs,ord]);
+    ;
 }
 
 $(document).ready(function(){

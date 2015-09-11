@@ -14,36 +14,38 @@ $(document).ready(function(){
     }
 
 
-  var taille=100;
-  var ligne= taille/10;
-  var numero=1;
-  var x=0;
-  var y=0;
-  var i=0;
-  var j=0;
-  var grille=[];
+      var taille=100;
+	var ligne= taille/10;
+	var numero=1;
+	var x=0;
+	var y=0;
+	var i=0;
+	var j=0;
+	var grille = [];
 
-while(i<ligne){
+	while(i<ligne){
 
-	while(j<ligne)
-	{
-		//Création d'une case
-		var cellule = new Cell(x, y, 0x00FF00, [i,j]);
-		if (stock.indexOf([i,j]) !== -1)
+		while(j<ligne)
 		{
-		    cellule.createImage('img/mine-noire.png');
+			//Création d'une case
+			var cellule = new Cell(x, y, 0x00FF00, numero);
+			if (table.indexOf(numero) !== -1)
+			{
+			    cellule.createImage('img/mine-noire.png');
+	            
+			}
+		    // cellule.createText(this.indice,couleur);
+		    stage.addChild(cellule.carre);
+	        grille[numero] = cellule;
+		  	numero++;
+			y=y+50;
+			j++	;
 		}
-	    // cellule.createText(this.indice,couleur);
-	    stage.addChild(cellule.carre);
-        grille[i,j]= cellule;
-		y=y+50;
-		j++	;
+		y = 0;
+		j = 0;
+		x=x+50;
+		i++;
 	}
-	y = 0;
-	j = 0;
-	x=x+50;
-	i++;
-}
 
 
 // function destroy()

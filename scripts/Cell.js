@@ -23,11 +23,6 @@ Cell.prototype =
 	    graph.beginFill(this.couleur, 1);
 	    graph.lineStyle(1,0xffffff,1);
 	    this.carre = graph.drawRect(this.horizontal,this.vertical,50,50);
-	    this.carre.interactive = true;
-	    this.carre.mousedown = function()
-	    {
-	    	// 
-	    };
 	},
 
 	//Création d'une image dans la case
@@ -50,5 +45,24 @@ Cell.prototype =
  	    text.position.x = this.horizontal + 25;
  	    text.position.y = this.vertical + 25;
  	    this.carre.addChild(text);
+ 	}
+
+ 	createSurcouche: function(couleur)
+ 	{
+ 		var surcouche = new PIXI.Graphics();
+	    surcouche.beginFill(this.couleur, 1);
+	  	surcouche.lineStyle(1,couleur,1);
+	    this.surcouche = graph.drawRect(this.horizontal,this.vertical,50,50);
+	    this.carre.addChild(surcouche);
+	    this.surcouche.interactive = true;
+	    this.surcouche.mousedown = function()
+	    {
+	    	if(event.which == 1){
+	    		alert('clic du bouton gauche');
+	    	}
+	    	else if ( event.which == 3 ){
+		        alert('clic du bouton droit'); 
+		    }
+	    };
  	}
 }

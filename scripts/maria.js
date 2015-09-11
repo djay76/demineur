@@ -31,7 +31,7 @@ $(document).ready(function(){
             i++;
         }
     }
-    
+ ///couche grille avec mines
     var taille=100;
 	var ligne= taille/10;
 	var numero=1;
@@ -64,23 +64,89 @@ $(document).ready(function(){
 		x=x+50;
 		i++;
 	}
+///couche indice	
+	var numero=1;
+	while(numero<=taille)
+	{
+		//Récupération de la cellule
+		var cellule = grille[numero];
+		if (table.indexOf(numero) !== -1)
+		{
+		    abs = cellule.abs;
+		    ord = cellule.ord;
+		   	if ((abs-1)>=0 && (ord-1)>=0)
+		   	{
+		   		var nbr = (abs-1)*10+(ord-1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   			grille[nbr].indice++;
+		   	}
+		   	if ((abs-1)>=0 && ord>=0)
+		   	{
+		   		var nbr = (abs-1)*10+ord+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   			grille[nbr].indice++;
+		   	}
+		   	if ((abs-1)>=0 && (ord+1)<=9)
+		   	{
+		   		var nbr = (abs-1)*10+(ord+1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   			grille[nbr].indice++;
+		   	}
+		   	if (abs>=0 && (ord-1)>=0)
+		   	{
+		   		var nbr = abs*10+(ord-1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   			grille[nbr].indice++;
+		   	}	
+		   	if (abs>=0 && (ord+1)<=9)
+		   	{
+		   		var nbr = abs*10+(ord+1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   			grille[nbr].indice++;
+		   	}
+		   	if ((abs+1)<=9 && (ord-1)>=0)
+		   	{
+		   		var nbr = (abs+1)*10+(ord-1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   			grille[nbr].indice++;
+		   	}
+		   	if ((abs+1)<=9 && ord>=0)
+		   	{
+		   		var nbr = (abs+1)*10+ord+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   			grille[nbr].indice++;
+		   	}
+		   	if ((abs+1)<=9 && (ord+1)<=9)
+		   	{
+		   		var nbr = (abs+1)*10+(ord+1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   			grille[nbr].indice++;
+		   	}
+		}
+	  	numero++;
+	}
 
+	//Remplissage des numéros indice
+	var numero=1;
+	while(numero<=taille)
+	{
+		if (grille[numero].indice>0)
+		{
+			indice = grille[numero].indice;
+			grille[numero].createText(indice, 0x333333);
+		}
+		numero++;
+	}
+
+///Surcouche	
 while(i<ligne){
 
 		while(j<ligne)
 		{
 			//Création d'une case
-			var cellule = new Cell(x, y, 0x888888, numero);
-		    stage.addChild(cellule.carre);
-            cellule.buttonMode=true;
-            cellule.interactive = true;
-            cellule.onMouseDown(function(addflag){
-                if ( event.which == 3 ){
-        alert('clic du bouton droit');
-    }
-
-            });
-	        surcouche[numero] = cellule;
+			surcouche[numero] = cellule;
+            surcouche[numero].createSurcouche(0x333333)
+	       
 		  	numero++;
 			y=y+50;
 			j++	;

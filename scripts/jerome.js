@@ -3,25 +3,6 @@ function getRandomInt()
 {
 	return Math.floor(Math.random()*100+1);
 }
-//Sélection de dix cases pour placer les mines
-var i = 0;
-var stock = [];
-var table = [];
-while (i<10)
-{
-	var nbr = getRandomInt();
-	if (table.indexOf(nbr) === -1)
-	{
-
-		table[i] = nbr;
-		ord = (nbr-1)%10;
-		abs = ((nbr-1)%100 - ord)/10;
-		stock[i] = [abs, ord];
-        console.log(stock[i])
-		i++;
-	}
-    ;
-}
 
 $(document).ready(function(){
 	//Initialisation de PIXI
@@ -36,6 +17,25 @@ $(document).ready(function(){
     	requestAnimationFrame( animate );
         renderer.render(stage);
     }
+
+    //Sélection de dix cases pour placer les mines
+	var i = 0;
+	var stock = [];
+	var table = [];
+	while (i<10)
+	{
+		var nbr = getRandomInt();
+		if (table.indexOf(nbr) === -1)
+		{
+
+			table[i] = nbr;
+			ord = (nbr-1)%10;
+			abs = ((nbr-1)%100 - ord)/10;
+			stock[i] = [abs, ord];
+	        console.log(stock[i])
+			i++;
+		}
+	}
 
     //Remplissage de la grille avec les mines(initalisation)
     var taille=100;

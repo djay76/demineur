@@ -13,8 +13,26 @@ $(document).ready(function(){
         renderer.render(stage);
     }
 
+    //Sélection de dix cases pour placer les mines
+    var i = 0;
+    var stock = [];
+    var table = [];
+    while (i<10)
+    {
+        var nbr = getRandomInt();
+        if (table.indexOf(nbr) === -1)
+        {
 
-      var taille=100;
+            table[i] = nbr;
+            ord = (nbr-1)%10;
+            abs = ((nbr-1)%100 - ord)/10;
+            stock[i] = [abs, ord];
+            console.log(stock[i])
+            i++;
+        }
+    }
+    
+    var taille=100;
 	var ligne= taille/10;
 	var numero=1;
 	var x=0;

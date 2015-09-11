@@ -4,6 +4,12 @@ function getRandomInt()
 	return Math.floor(Math.random()*100+1);
 }
 
+function destroyAll(tableau)
+{
+	
+}
+
+
 $(document).ready(function(){
 	//Initialisation de PIXI
 	var stage = new PIXI.Container();
@@ -55,6 +61,7 @@ $(document).ready(function(){
 			if (table.indexOf(numero) !== -1)
 			{
 			    cellule.createImage('img/mine-noire.png');
+			    cellule.indice = -1;
 			}
 		    // cellule.createText(this.indice,couleur);
 		    stage.addChild(cellule.carre);
@@ -150,4 +157,7 @@ $(document).ready(function(){
 		grille[numero].createSurcouche();
 		numero++;
 	}
+
+	
+
 });

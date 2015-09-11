@@ -35,8 +35,7 @@ while(i<ligne){
 		}
 	    // cellule.createText(this.indice,couleur);
 	    stage.addChild(cellule.carre);
-        grille[i][j]= cellule;
-	  	numero++;
+        grille[i,j]= cellule;
 		y=y+50;
 		j++	;
 	}

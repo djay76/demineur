@@ -15,6 +15,7 @@ while (count<10)
 		table[count] = [i,j];
 		count++;
 	}
+    console.log(table[i,j]);
 }
 
 
@@ -86,4 +87,5 @@ $(document).ready(function(){
     // grille[numero+11].createText(indice, 0xffffff);
 
 });
+
 

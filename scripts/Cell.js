@@ -4,7 +4,7 @@ function Cell(x,y,couleur, coord)
 	this.horizontal = x;
 	this.vertical = y;
 	this.couleur = couleur;
-	this.coord = coord;
+	this.coordi = coord;
 	this.indice = 0;
 	this.carre;
 	this.createCell();

@@ -61,7 +61,7 @@ Cell.prototype =
 	    {
 	    	if(info.data.originalEvent.which == 1)
 	            {
-	            	
+	            	events(this);
 		    	}
 		    		
 		    	}

@@ -56,7 +56,6 @@ $(document).ready(function(){
 			if (table.indexOf(numero) !== -1)
 			{
 			    cellule.createImage('img/mine-noire.png');
-	            
 			}
 		    // cellule.createText(this.indice,couleur);
 		    stage.addChild(cellule.carre);
@@ -71,22 +70,76 @@ $(document).ready(function(){
 		i++;
 	}
 
-});
+	var numero=1;
+	while(numero<=taille)
+	{
+		//Récupération de la cellule
+		var cellule = grille[numero];
+		if (table.indexOf(numero) !== -1)
+		{
+		    abs = cellule.abs;
+		    ord = cellule.ord;
+		   	if ((abs-1)>=0 && (ord-1)>=0)
+		   	{
+		   		var nbr = (abs-1)*10+(ord-1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   			grille[nbr].indice++;
+		   	}
+		   	if ((abs-1)>=0 && ord>=0)
+		   	{
+		   		var nbr = (abs-1)*10+ord+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   		grille[nbr].indice++;
+		   	}
+		   	if ((abs-1)>=0 && (ord+1)<=9)
+		   	{
+		   		var nbr = (abs-1)*10+(ord+1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   		grille[nbr].indice++;
+		   	}
+		   	if (abs>=0 && (ord-1)>=0)
+		   	{
+		   		var nbr = abs*10+(ord-1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   		grille[nbr].indice++;
+		   	}	
+		   	if (abs>=0 && (ord+1)<=9)
+		   	{
+		   		var nbr = abs*10+(ord+1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   		grille[nbr].indice++;
+		   	}
+		   	if ((abs+1)<=9 && (ord-1)>=0)
+		   	{
+		   		var nbr = (abs+1)*10+(ord-1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   		grille[nbr].indice++;
+		   	}
+		   	if ((abs+1)<=9 && ord>=0)
+		   	{
+		   		var nbr = (abs+1)*10+ord+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   		grille[nbr].indice++;
+		   	}
+		   	if ((abs+1)<=9 && (ord+1)<=9)
+		   	{
+		   		var nbr = (abs+1)*10+(ord+1)+1;
+		   		if (table.indexOf(nbr) ==-1)
+		   		grille[nbr].indice++;
+		   	}
+		}
+	  	numero++;
+	}
 
-//Remplissage de la grille avec les numéros
-	            // indice = grille[numero-11].indice + 1;
-	            // grille[numero-11].createText(indice, 0xffffff);
-	            // indice = grille[numero-10].indice + 1;
-	            // grille[numero-10].createText(indice, 0xffffff);
-	            // indice = grille[numero-9].indice + 1;
-	            // grille[numero-9].createText(indice, 0xffffff);
-	            // indice = grille[numero-1].indice + 1;
-	            // grille[numero-1].createText(indice, 0xffffff);
-	            // indice = grille[numero+1].indice + 1;
-	            // grille[numero+1].createText(indice, 0xffffff);
-	            // indice = grille[numero+9].indice + 1;
-	            // grille[numero+9].createText(indice, 0xffffff);
-	            // indice = grille[numero+10].indice + 1;
-	            // grille[numero+10].createText(indice, 0xffffff);
-	            // indice = grille[numero+11].indice + 1;
-	            // grille[numero+11].createText(indice, 0xffffff);
+	var numero=1;
+	while(numero<=taille)
+	{
+		if (grille[numero].indice>0)
+		{
+			indice = grille[numero].indice;
+			grille[numero].createText(indice, 0x333333);
+		}
+		numero++;
+	}
+
+});

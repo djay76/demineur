@@ -37,9 +37,9 @@ Cell.prototype =
  	{
  		var text = new PIXI.Text(nombre ,{font: "30px Arial", fill: couleur});
  	    text.anchor.x = 0.5;
- 	    text.anchor.y = 0.5; 
- 	    text.position.x = this.horizontal+25;
- 	    text.position.y = this.horizontal+25;
+ 	    text.anchor.y = 0.5;
+ 	    text.position.x = this.horizontal + 25;
+ 	    text.position.y = this.vertical + 25;
  	    this.carre.addChild(text);
  	}
 }

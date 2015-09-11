@@ -20,53 +20,30 @@ $(document).ready(function(){
   var y=0;
   var i=0;
   var j=0;
-console.log(ligne);
+
 while(i<ligne){
-	while(j<ligne && ){
-	//Création d'une case
-    var graph = new PIXI.Graphics();
-    graph.beginFill(0xFF6000, 1);
-    graph.lineStyle(1,0xffffff,1);
-    var carre = graph.drawRect(x,y,50,50);
-    stage.addChild(carre);
 
-    //Création d'une image dans la case
-    var drapeau = new PIXI.Sprite.fromImage('img/drapeau.png');
-    // center the sprites anchor point
-    drapeau.anchor.x = 0.5;
-    drapeau.anchor.y = 0.5; 
-    // move the sprite t the center of the screen
-    drapeau.position.x = x+25;
-    drapeau.position.y = y+25;
-    carre.addChild(drapeau);
-  
-	y=y+50;
-	j++	;
-	console.log(j);
-	console.log(i);
-	console.log(y);
+	while(j<ligne)
+	{
+		//Création d'une case
+		var cellule = new Cell(x, y, 0x00FF00);
+	    cellule.createImage('img/mine-noire.png');
+	    cellule.createText(4,0xffffff);
+	    stage.addChild(cellule.carre);
+	  
+		y=y+50;
+		j++	;
+		console.log('j:'+j);
+		console.log('y:'+y);
 
-
-	 //Création d'une case
-    var graph = new PIXI.Graphics();
-    graph.beginFill(0xFF6000, 1);
-    graph.lineStyle(1,0xffffff,1);
-    var carre = graph.drawRect(x,y,50,50);
-    stage.addChild(carre);
-
-    //Création d'une image dans la case
-    var drapeau = new PIXI.Sprite.fromImage('img/drapeau.png');
-    // center the sprites anchor point
-    drapeau.anchor.x = 0.5;
-    drapeau.anchor.y = 0.5; 
-    // move the sprite t the center of the screen
-    drapeau.position.x = x+25;
-    drapeau.position.y = y+25;
-    carre.addChild(drapeau);
-  
-x=x+50;
-i++;	
-}}
+	}
+	y = 0;
+	j = 0;
+	x=x+50;
+	i++;
+	console.log('i:'+i);
+	console.log('x:'+x);
+}
    
 
 });

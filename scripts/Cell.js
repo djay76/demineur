@@ -9,6 +9,7 @@ function Cell(x,y,couleur,numero)
 	this.abs=((numero-1)%100-this.ord)/10;
 	this.indice = 0;
 	this.carre;
+	this.surcouche;
 	this.createCell();
 	// this.createImage('img/mine-noire.png');
 	// this.createText(4, 0xFF0000);
@@ -23,15 +24,10 @@ Cell.prototype =
 	    graph.beginFill(this.couleur, 1);
 	    graph.lineStyle(1,0xffffff,1);
 	    this.carre = graph.drawRect(this.horizontal,this.vertical,50,50);
-	    this.carre.interactive = true;
-	    this.carre.mousedown = function()
-	    {
-	    	// 
-	    };
 	},
 
 	//Création d'une image dans la case
-	createImage: function(url)
+	createImage : function(url)
 	{
 		var image = new PIXI.Sprite.fromImage(url);
 	    image.anchor.x = 0.5;
@@ -42,7 +38,7 @@ Cell.prototype =
 	},
 
 	//Création d'un texte dans la case
-	createText: function(nombre, couleur)
+	createText : function(nombre, couleur)
  	{
  		var text = new PIXI.Text(nombre ,{font: "30px Arial", fill: couleur});
  	    text.anchor.x = 0.5;
@@ -50,5 +46,20 @@ Cell.prototype =
  	    text.position.x = this.horizontal + 25;
  	    text.position.y = this.vertical + 25;
  	    this.carre.addChild(text);
- 	}
+ 	},
+
+ 	createSurcouche : function()
+	{
+		var self = this;
+		var graph = new PIXI.Graphics();
+	    graph.beginFill(0x777777, 1);
+	    graph.lineStyle(1,0xffffff,1);
+	    this.surcouche = graph.drawRect(this.horizontal,this.vertical,50,50);
+	    this.carre.addChild(this.surcouche);
+	    this.surcouche.interactive = true;
+	    this.surcouche.mousedown = function()
+	    {
+	    	self.surcouche.visible = false;
+	    };
+	}
 }

@@ -10,11 +10,11 @@ var table = [];
 while (i<10)
 {
 	var nbr = getRandomInt();
-	if (stock.indexOf(nbr) === -1)
+	if (table.indexOf(nbr) === -1)
 	{
-		stock[i] = nbr;
+		table[i] = nbr;
 		abs = ((nbr-1)%100 - ord)/10;
-		table[i] = [abs, ord];
+		stock[i] = [abs, ord];
 		i++;
 	}
 }

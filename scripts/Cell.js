@@ -89,13 +89,14 @@ Cell.prototype =
 					self.createImage('img/mine-rouge.png');
 					destroyAll(grille);
 				}
- 				// else 
- 				// 	cascade(this);
+ 				else 
+ 				cascade(this.abs,this.ord);
 	    	}
 	    	else if (which == 2)
 	    	{
 	    		self.toggleImage(flag);
 	    	}
+
 	    };
 	}
 }

@@ -115,18 +115,6 @@ $(document).ready(function(){
 		   	}
     	}
 
-    function events(objet){
-    	if(indice==0)
-		{
-			
-		}
-		else if(indice>0)
-		{
-			self.surcouche.visible = false;
-		}
-
-    }
-
     //Sélection de dix cases pour placer les mines
     var i = 0;
     var stock = [];
@@ -259,23 +247,11 @@ $(document).ready(function(){
 		{
 			
             grille[numero].createSurcouche(0x333333);
-            grille[numero].surcouche.mousedown = function(info)
-            {
-	            if(info.data.originalEvent.which == 1)
-	            {
-	            	indice = grille[numero].indice;
-	            	abs = cellule.abs;
-		   			ord = cellule.ord;
+            
+        	indice = grille[numero].indice;
+        	abs = cellule.abs;
+   			ord = cellule.ord;
 		    	
-		    			events(this);
-		    		
-		    	}
-		    	else if ( info.data.originalEvent.which == 2 || ctrlKey == true )
-		    	{
-		    		grille[numero].this.surcouche.createImage('surcouche','img/drapeau.png');
-				   
-			    }
-	       	}
 		  	numero++;
 		}
 

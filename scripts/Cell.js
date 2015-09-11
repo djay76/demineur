@@ -11,8 +11,6 @@ function Cell(x,y,couleur,numero)
 	this.carre;
 	this.surcouche;
 	this.createCell();
-	// this.createImage('img/mine-noire.png');
-	// this.createText(4, 0xFF0000);
 }
 
 Cell.prototype =
@@ -48,6 +46,18 @@ Cell.prototype =
  	    this.carre.addChild(text);
  	},
 
+
+ 	toggleImage : function(image)
+	{
+		if (image.visible)
+		{
+			image.visible = false;
+		}
+		else
+			image.visible = true;
+	},
+
+ 	
  	createSurcouche: function(couleur)
  	{
  		var self = this;
@@ -56,37 +66,37 @@ Cell.prototype =
 	  	graph.lineStyle(1,0xffffff,1);
 	    this.surcouche = graph.drawRect(this.horizontal,this.vertical,50,50);
 	    this.carre.addChild(this.surcouche);
+
+	    var flag = new PIXI.Sprite.fromImage('img/drapeau.png');
+	    flag.anchor.x = 0.5;
+	    flag.anchor.y = 0.5; 
+	    flag.position.x = self.horizontal+25;
+	    flag.position.y = self.vertical+25;
+	    this.surcouche.addChild(flag);
+	    flag.visible = false; 
+
+
 	    this.surcouche.interactive = true;
 	    this.surcouche.mousedown = function(info)
 	    {
-	    	if(info.data.originalEvent.which == 1)
-	            {
-	            	events(this);
-		    	}
-		    		
-		    	}
-		    	else if ( info.data.originalEvent.which == 2 || ctrlKey == true )
-		    	{
-				   
-			    }
-	    };
- 	}
- }
-// =======
-//  	},
+	    	which = info.data.originalEvent.which;
+	    	if (which == 1)
+	    	{
+ 				if (self.indice > 0)
+ 					this.visible = false;
+ 				else if (self.indice == -1)
+				{
+					this.visible = false;
+					self.createImage('img/mine-rouge.png');
+				}
+ 				else 
+ 				cascade(this.abs,this.ord);
+	    	}
+	    	else if (which == 2)
+	    	{
+	    		self.toggleImage(flag);
+	    	}
 
-//  	createSurcouche : function()
-// 	{
-// 		var self = this;
-// 		var graph = new PIXI.Graphics();
-// 	    graph.beginFill(0x777777, 1);
-// 	    graph.lineStyle(1,0xffffff,1);
-// 	    this.surcouche = graph.drawRect(this.horizontal,this.vertical,50,50);
-// 	    this.carre.addChild(this.surcouche);
-// 	    this.surcouche.interactive = true;
-// 	    this.surcouche.mousedown = function()
-// 	    {
-// 	    	self.surcouche.visible = false;
-// 	    };
-// 	}
-// >>>>>>> 0a04887b47128b280ad1201beaaeab918370ef84
+	    };
+	}
+}

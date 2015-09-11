@@ -115,18 +115,6 @@ $(document).ready(function(){
 		   	}
     	}
 
-    function events(objet){
-    	if(indice==0)
-		{
-			casacade(abs,ord);
-		}
-		else if(indice>0)
-		{
-			self.surcouche.visible = false;
-		}
-
-    }
-
     //Sélection de dix cases pour placer les mines
     var i = 0;
     var stock = [];

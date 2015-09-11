@@ -16,6 +16,7 @@ $(document).ready(function(){
 
   var taille=100;
   var ligne= taille/10;
+  var numero=1;
   var x=0;
   var y=0;
   var i=0;
@@ -26,11 +27,11 @@ while(i<ligne){
 	while(j<ligne)
 	{
 		//Création d'une case
-		var cellule = new Cell(x, y, 0x00FF00);
+		var cellule = new Cell(x, y, 0x00FF00, numero);
 	    cellule.createImage('img/mine-noire.png');
 	    cellule.createText(4,0xffffff);
 	    stage.addChild(cellule.carre);
-	  
+	  	numero++;
 		y=y+50;
 		j++	;
 		console.log('j:'+j);

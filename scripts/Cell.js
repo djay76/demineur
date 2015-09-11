@@ -87,10 +87,10 @@ Cell.prototype =
  				else if (self.indice == -1)
 				{
 					self.createImage('img/mine-rouge.png');
-					destroyAll(grille);
+					destroyAll();
 				}
  				else 
- 				cascade(this.abs,this.ord);
+ 					cascade(self.abs,self.ord);
 	    	}
 	    	else if (which == 2)
 	    	{

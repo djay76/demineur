@@ -21,7 +21,7 @@ $(document).ready(function(){
 		   	if ((abs-1)>=0 && (ord-1)>=0)
 		   	{
 		   		var nbr = (abs-1)*10+(ord-1)+1;
-		   		if(table.indexOf(nbr) ==-1 && grille[nbr].indice >=0)
+		   		if(table.indexOf(nbr) == -1 && grille[nbr].indice >=0)
 		   		{
 		   			self.surcouche.visible = false;
 		   			if(indice ==0)
@@ -77,6 +77,7 @@ $(document).ready(function(){
 		   				cascade(abs,ord+1);
 		   			}
 		   		}
+            }
 		   	if ((abs+1)<=9 && (ord-1)>=0)
 		   	{
 		   		var nbr = (abs+1)*10+(ord-1)+1;

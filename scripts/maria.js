@@ -21,21 +21,21 @@ $(document).ready(function(){
   var y=0;
   var i=0;
   var j=0;
-  var grille = [];
+  var grille=[];
 
 while(i<ligne){
 
 	while(j<ligne)
 	{
 		//Création d'une case
-		var cellule = new Cell(x, y, 0x00FF00, numero);
-		if (table.indexOf(numero) !== -1)
+		var cellule = new Cell(x, y, 0x00FF00, [i,j]);
+		if (table.indexOf([i,j]) !== -1)
 		{
 		    cellule.createImage('img/mine-noire.png');
 		}
 	    // cellule.createText(this.indice,couleur);
 	    stage.addChild(cellule.carre);
-        grille[numero] = cellule;
+        grille[i][j]= cellule;
 	  	numero++;
 		y=y+50;
 		j++	;

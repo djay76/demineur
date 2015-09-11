@@ -29,7 +29,7 @@ while(i<ligne){
 	{
 		//Création d'une case
 		var cellule = new Cell(x, y, 0x00FF00, [i,j]);
-		if (table.indexOf([i,j]) !== -1)
+		if (stock.indexOf([i,j]) !== -1)
 		{
 		    cellule.createImage('img/mine-noire.png');
 		}

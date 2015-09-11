@@ -1,22 +1,21 @@
 // Générer dix nombres aléatoires différents
 function getRandomInt()
 {
-	return Math.floor(Math.random()*100+1);
+	return Math.floor(Math.random()*10);
 }
 //Sélection de dix cases pour placer les mines
-var i = 0;
+var count = 0;
 var table = [];
-while (i<10)
+while (count<10)
 {
-	var nbr = getRandomInt();
-	if (table.indexOf(nbr) === -1)
+	var i = getRandomInt();
+	var j = getRandomInt();
+	if (table.indexOf([i,j]) === -1)
 	{
-		table[i] = nbr;
-		i++;
+		table[count] = [i,j];
+		count++;
 	}
 }
-table.sort(function(a,b){return a-b});
-console.log(table);
 
 
 $(document).ready(function(){
@@ -49,8 +48,12 @@ $(document).ready(function(){
 		{
 			//Création d'une case
 			var cellule = new Cell(x, y, 0x00FF00, numero);
-		    cellule.createImage('img/mine-noire.png');
-		    cellule.createText(4,0xffffff);
+			if (table.indexOf(numero) !== -1)
+			{
+			    cellule.createImage('img/mine-noire.png');
+	            
+			}
+		    // cellule.createText(this.indice,couleur);
 		    stage.addChild(cellule.carre);
 	        grille[numero] = cellule;
 		  	numero++;
@@ -62,22 +65,25 @@ $(document).ready(function(){
 		x=x+50;
 		i++;
 	}
-    //Remplissage de la grille avec les numéros
-    indice = grille[numero-11].indice + 1;
-    grille[numero-11].createText(indice, 0xffffff);
-    indice = grille[numero-10].indice + 1;
-    grille[numero-10].createText(indice, 0xffffff);
-    indice = grille[numero-9].indice + 1;
-    grille[numero-9].createText(indice, 0xffffff);
-    indice = grille[numero-1].indice + 1;
-    grille[numero-1].createText(indice, 0xffffff);
-    indice = grille[numero+1].indice + 1;
-    grille[numero+1].createText(indice, 0xffffff);
-    indice = grille[numero+9].indice + 1;
-    grille[numero+9].createText(indice, 0xffffff);
-    indice = grille[numero+10].indice + 1;
-    grille[numero+10].createText(indice, 0xffffff);
-    indice = grille[numero+11].indice + 1;
-    grille[numero+11].createText(indice, 0xffffff);
+
+
+
 });
 
+//Remplissage de la grille avec les numéros
+	            // indice = grille[numero-11].indice + 1;
+// grille[numero-11].createText(indice, 0xffffff);
+// indice = grille[numero-10].indice + 1;
+// grille[numero-10].createText(indice, 0xffffff);
+// indice = grille[numero-9].indice + 1;
+// grille[numero-9].createText(indice, 0xffffff);
+// indice = grille[numero-1].indice + 1;
+// grille[numero-1].createText(indice, 0xffffff);
+// indice = grille[numero+1].indice + 1;
+// grille[numero+1].createText(indice, 0xffffff);
+// indice = grille[numero+9].indice + 1;
+// grille[numero+9].createText(indice, 0xffffff);
+// indice = grille[numero+10].indice + 1;
+// grille[numero+10].createText(indice, 0xffffff);
+// indice = grille[numero+11].indice + 1;
+// grille[numero+11].createText(indice, 0xffffff);

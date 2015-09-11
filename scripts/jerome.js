@@ -10,12 +10,15 @@ var table = [];
 while (i<10)
 {
 	var nbr = getRandomInt();
-	if (table.indexOf(nbr) === -1)
+	if (stock.indexOf(nbr) === -1)
 	{
-		table[i] = nbr;
-        ord=(nbr-1)%10;
+
+		stock[i] = nbr;
+		console.log(stock[i]);
+		ord = (nbr-1)%10;
 		abs = ((nbr-1)%100 - ord)/10;
-		stock[i] = [abs, ord];
+		table[i] = [abs, ord];
+		console.log(table[i]);
 		i++;
 	}
     console.log(stock[abs,ord]);

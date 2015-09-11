@@ -1,9 +1,10 @@
 //Objet définissant une case du démineur
-function Cell(x,y,couleur)
+function Cell(x,y,couleur, numero)
 {
 	this.horizontal = x;
 	this.vertical = y;
 	this.couleur = couleur;
+	this.numero = numero;
 	this.carre;
 	this.createCell();
 	// this.createImage('img/mine-noire.png');

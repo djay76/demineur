@@ -65,6 +65,31 @@ $(document).ready(function(){
 		i++;
 	}
 
+while(i<ligne){
+
+		while(j<ligne)
+		{
+			//Création d'une case
+			var cellule = new Cell(x, y, 0x888888, numero);
+		    stage.addChild(cellule.carre);
+            cellule.buttonMode=true;
+            cellule.interactive = true;
+            cellule.onMouseDown(function(addflag){
+                if ( event.which == 3 ){
+        alert('clic du bouton droit');
+    }
+
+            });
+	        surcouche[numero] = cellule;
+		  	numero++;
+			y=y+50;
+			j++	;
+		}
+		y = 0;
+		j = 0;
+		x=x+50;
+		i++;
+	}
 
 // function destroy()
 

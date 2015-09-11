@@ -6,7 +6,13 @@ function getRandomInt()
 
 function destroyAll(tableau)
 {
-	
+	var numero = 1;
+	var taille = tableau.length;
+	while (numero < taille)
+	{
+		tableau.surcouche.visible = false;
+		numero++;
+	}
 }
 
 
@@ -152,7 +158,7 @@ $(document).ready(function(){
 	}
 
 	//Surcouche
-
+	var numero = 1;
 	while(numero<=taille)
 	{
 		grille[numero].createSurcouche(0x777777);

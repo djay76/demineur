@@ -86,8 +86,8 @@ Cell.prototype =
  					this.visible = false;
  				else if (self.indice == -1)
 				{
-					this.visible = false;
 					self.createImage('img/mine-rouge.png');
+					destroyAll(grille);
 				}
  				// else 
  				// 	cascade(this);

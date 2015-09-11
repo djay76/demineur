@@ -1,12 +1,19 @@
+var grille = [];
 // Générer dix nombres aléatoires différents
 function getRandomInt()
 {
 	return Math.floor(Math.random()*100+1);
 }
 
-function destroyAll(tableau)
+function destroyAll()
 {
-	
+	var numero = 1;
+	var taille = grille.length;
+	while (numero < taille)
+	{
+		grille[numero].surcouche.visible = false;
+		numero++;
+	}
 }
 
 
@@ -38,7 +45,6 @@ $(document).ready(function(){
 			ord = (nbr-1)%10;
 			abs = ((nbr-1)%100 - ord)/10;
 			stock[i] = [abs, ord];
-
 			i++;
 		}
 	}
@@ -51,7 +57,6 @@ $(document).ready(function(){
 	var y=0;
 	var i=0;
 	var j=0;
-	var grille = [];
 
 	while(i<ligne){
 
@@ -152,7 +157,7 @@ $(document).ready(function(){
 	}
 
 	//Surcouche
-
+	var numero = 1;
 	while(numero<=taille)
 	{
 		grille[numero].createSurcouche(0x777777);

@@ -46,7 +46,6 @@ $(document).ready(function(){
         renderer.render(stage);
     }
 
-
     //Sélection de dix cases pour placer les mines
     var i = 0;
     var stock = [];

@@ -23,6 +23,11 @@ Cell.prototype =
 	    graph.beginFill(this.couleur, 1);
 	    graph.lineStyle(1,0xffffff,1);
 	    this.carre = graph.drawRect(this.horizontal,this.vertical,50,50);
+	    this.carre.interactive = true;
+	    this.carre.mousedown = function()
+	    {
+	    	// 
+	    };
 	},
 
 	//Création d'une image dans la case

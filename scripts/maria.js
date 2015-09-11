@@ -1,3 +1,35 @@
+var table = [];
+var grille=[];
+    /// Gestion des evenements
+    	
+    	///destruction case vide en cascade
+    	function cascade(x, y, checked)
+    	{
+    		if (x >= 0 && x < 10 && y >= 0 && y < 10)
+    		{
+	    		var nbr = x*10+y+1;
+	    		if (checked.indexOf(nbr) === -1)
+	    		{
+	    			checked.push(nbr);
+	    			if (grille[nbr].indice == 0)
+	    			{
+	    				grille[nbr].surcouche.visible = false;
+			    		cascade(x + 1, y, checked);
+			    		cascade(x + 1, y + 1, checked);
+			    		cascade(x + 1, y - 1, checked);
+			    		cascade(x, y + 1, checked);
+			    		cascade(x - 1, y + 1, checked);
+			    		cascade(x + 1, y + 1, checked);
+			    		cascade(x - 1, y - 1, checked);
+			    		cascade(x, y - 1, checked);
+	    			}
+	    			else (grille[nbr].indice > 0)
+	    				grille[nbr].surcouche.visible = false;
+	    		}
+	    	}
+    	}
+
+
 $(document).ready(function(){
 	//Initialisation de PIXI
 	var stage = new PIXI.Container();
@@ -7,119 +39,16 @@ $(document).ready(function(){
 	container.appendChild(renderer.view);
 	
 	requestAnimationFrame(animate);
-    function animate() {
+    function animate() 
+    {
     	requestAnimationFrame( animate );
         // render the stage   
         renderer.render(stage);
     }
 
-    /// Gestion des evenements
-    	
-    	///destruction case vide en cascade
-    	function cascade(abs,ord)
-    	{
-		   	if ((abs-1)>=0 && (ord-1)>=0)
-		   	{
-		   		var nbr = (abs-1)*10+(ord-1)+1;
-		   		if(table.indexOf(nbr) == -1 && grille[nbr].indice >=0)
-		   		{
-		   			self.surcouche.visible = false;
-		   			if(indice ==0)
-		   			{
-		   				cascade(abs-1,ord-1);
-		   			}
-		   		}
-		   	}
-		   	if ((abs-1)>=0 && ord>=0)
-		   	{
-		   		var nbr = (abs-1)*10+ord+1;
-		   		if(table.indexOf(nbr) ==-1 && grille[nbr].indice >=0)
-		   		{
-		   			self.surcouche.visible = false;
-		   			if(indice ==0)
-		   			{
-		   				cascade(abs-1,ord);
-		   			}
-		   		}
-		   	}
-		   	if ((abs-1)>=0 && (ord+1)<=9)
-		   	{
-		   		var nbr = (abs-1)*10+(ord+1)+1;
-		   		if(table.indexOf(nbr) ==-1 && grille[nbr].indice >=0)
-		   		{
-		   			self.surcouche.visible = false;
-		   			if(indice ==0)
-		   			{
-		   				cascade(abs-1,ord+1);
-		   			}
-		   		}
-		   	}
-		   	if (abs>=0 && (ord-1)>=0)
-		   	{
-		   		var nbr = abs*10+(ord-1)+1;
-		   		if(table.indexOf(nbr) ==-1 && grille[nbr].indice >=0)
-		   		{
-		   			self.surcouche.visible = false;
-		   			if(indice ==0)
-		   			{
-		   				cascade(abs,ord-1);
-		   			}
-		   		}
-		   	}	
-		   	if (abs>=0 && (ord+1)<=9)
-		   	{
-		   		var nbr = abs*10+(ord+1)+1;
-		   		if(table.indexOf(nbr) ==-1 && grille[nbr].indice >=0)
-		   		{
-		   			self.surcouche.visible = false;
-		   			if(indice ==0)
-		   			{
-		   				cascade(abs,ord+1);
-		   			}
-		   		}
-            }
-		   	if ((abs+1)<=9 && (ord-1)>=0)
-		   	{
-		   		var nbr = (abs+1)*10+(ord-1)+1;
-		   		if(table.indexOf(nbr) ==-1 && grille[nbr].indice >=0)
-		   		{
-		   			self.surcouche.visible = false;
-		   			if(indice ==0)
-		   			{
-		   				cascade(abs+1,ord-1);
-		   			}
-		   		}
-		   	}
-		   	if ((abs+1)<=9 && ord>=0)
-		   	{
-		   		var nbr = (abs+1)*10+ord+1;
-		   		if(table.indexOf(nbr) ==-1 && grille[nbr].indice >=0)
-		   		{
-		   			self.surcouche.visible = false;
-		   			if(indice ==0)
-		   			{
-		   				cascade(abs+1,ord);
-		   			}
-		   		}
-		   	}
-		   	if ((abs+1)<=9 && (ord+1)<=9)
-		   	{
-		   		var nbr = (abs+1)*10+(ord+1)+1;
-		   		if(table.indexOf(nbr) ==-1 && grille[nbr].indice >=0)
-		   		{
-		   			self.surcouche.visible = false;
-		   			if(indice ==0)
-		   			{
-		   				cascade(abs+1,ord+1);
-		   			}
-		   		}
-		   	}
-    	}
-
     //Sélection de dix cases pour placer les mines
     var i = 0;
     var stock = [];
-    var table = [];
     while (i<10)
     {
         var nbr = getRandomInt();
@@ -142,7 +71,6 @@ $(document).ready(function(){
 	var y=0;
 	var i=0;
 	var j=0;
-	var grille = [];
 
 	while(i<ligne){
 
@@ -246,16 +174,8 @@ $(document).ready(function(){
 		var numero=1;
 		while(numero<=taille)
 		{
-			
-            grille[numero].createSurcouche(0x333333);
-            
-        	indice = grille[numero].indice;
-        	abs = cellule.abs;
-   			ord = cellule.ord;
-		    	
+			var indice = grille[numero].indice;
+            grille[numero].createSurcouche(0x777777);
 		  	numero++;
 		}
-
-// function destroy()
-
 });

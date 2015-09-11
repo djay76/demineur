@@ -88,8 +88,12 @@ Cell.prototype =
 					self.createImage('img/mine-rouge.png');
 					destroyAll();
 				}
- 				else 
- 					cascade(self.abs,self.ord);
+ 				else
+ 				{
+	 				this.visible = false;
+	 				cascade(self.abs,self.ord,[]);
+ 				}
+
 	    	}
 	    	else if (which == 2)
 	    	{

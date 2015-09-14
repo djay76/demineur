@@ -12,7 +12,7 @@ function displayIndice(x,y)
 	if (x>=0 && x<10 && y>=0 && y<10 )
 	{
 		var nbr = x*10+y+1;
-		if (table.indexOf(nbr) == -1)
+		if (table.indexOf(nbr) === -1 && grille[nbr].indice !== -1)
 			grille[nbr].indice++;
 	}
 }
@@ -72,18 +72,13 @@ $(document).ready(function(){
 
     //Sélection de dix cases pour placer les mines
 	var i = 0;
-	// var stock = [];
 	var table = [];
 	while (i<10)
 	{
 		var nbr = getRandomInt();
 		if (table.indexOf(nbr) === -1)
 		{
-
 			table[i] = nbr;
-			// ord = (nbr-1)%10;
-			// abs = ((nbr-1)%100 - ord)/10;
-			// stock[i] = [abs, ord];
 			i++;
 		}
 	}
@@ -108,7 +103,6 @@ $(document).ready(function(){
 			    cellule.createImage('img/mine-noire.png');
 			    cellule.indice = -1;
 			}
-		    // cellule.createText(this.indice,couleur);
 		    stage.addChild(cellule.carre);
 	        grille[numero] = cellule;
 		  	numero++;

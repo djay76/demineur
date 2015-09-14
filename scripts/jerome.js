@@ -1,3 +1,4 @@
+var table = [];
 var grille = [];
 // Générer dix nombres aléatoires différents
 function getRandomInt()
@@ -5,6 +6,18 @@ function getRandomInt()
 	return Math.floor(Math.random()*100+1);
 }
 
+//Générer les nombres indices d'une case
+function displayIndice(x,y)
+{
+	if (x>=0 && x<10 && y>=0 && y<10 )
+	{
+		var nbr = x*10+y+1;
+		if (table.indexOf(nbr) == -1)
+			grille[nbr].indice++;
+	}
+}
+
+//Détruire la surcouche pour terminer la partie
 function destroyAll()
 {
 	var numero = 1;
@@ -16,6 +29,32 @@ function destroyAll()
 	}
 }
 
+//Découvrir les cases alentours quand une case est découverte
+function cascade(x, y, checked)
+{
+	if (x >= 0 && x < 10 && y >= 0 && y < 10)
+	{
+		var nbr = x*10+y+1;
+		if (checked.indexOf(nbr) === -1)
+		{
+			checked.push(nbr);
+			if (grille[nbr].indice == 0)
+			{
+				grille[nbr].surcouche.visible = false;
+	    		cascade(x + 1, y, checked);
+	    		cascade(x + 1, y + 1, checked);
+	    		cascade(x + 1, y - 1, checked);
+	    		cascade(x, y + 1, checked);
+	    		cascade(x - 1, y + 1, checked);
+	    		cascade(x + 1, y + 1, checked);
+	    		cascade(x - 1, y - 1, checked);
+	    		cascade(x, y - 1, checked);
+			}
+			else (grille[nbr].indice > 0)
+				grille[nbr].surcouche.visible = false;
+		}
+	}
+}
 
 $(document).ready(function(){
 	//Initialisation de PIXI
@@ -33,7 +72,7 @@ $(document).ready(function(){
 
     //Sélection de dix cases pour placer les mines
 	var i = 0;
-	var stock = [];
+	// var stock = [];
 	var table = [];
 	while (i<10)
 	{
@@ -42,9 +81,9 @@ $(document).ready(function(){
 		{
 
 			table[i] = nbr;
-			ord = (nbr-1)%10;
-			abs = ((nbr-1)%100 - ord)/10;
-			stock[i] = [abs, ord];
+			// ord = (nbr-1)%10;
+			// abs = ((nbr-1)%100 - ord)/10;
+			// stock[i] = [abs, ord];
 			i++;
 		}
 	}
@@ -90,56 +129,16 @@ $(document).ready(function(){
 		var cellule = grille[numero];
 		if (table.indexOf(numero) !== -1)
 		{
-		    abs = cellule.abs;
-		    ord = cellule.ord;
-		   	if ((abs-1)>=0 && (ord-1)>=0)
-		   	{
-		   		var nbr = (abs-1)*10+(ord-1)+1;
-		   		if (table.indexOf(nbr) ==-1)
-		   			grille[nbr].indice++;
-		   	}
-		   	if ((abs-1)>=0 && ord>=0)
-		   	{
-		   		var nbr = (abs-1)*10+ord+1;
-		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
-		   	}
-		   	if ((abs-1)>=0 && (ord+1)<=9)
-		   	{
-		   		var nbr = (abs-1)*10+(ord+1)+1;
-		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
-		   	}
-		   	if (abs>=0 && (ord-1)>=0)
-		   	{
-		   		var nbr = abs*10+(ord-1)+1;
-		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
-		   	}	
-		   	if (abs>=0 && (ord+1)<=9)
-		   	{
-		   		var nbr = abs*10+(ord+1)+1;
-		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
-		   	}
-		   	if ((abs+1)<=9 && (ord-1)>=0)
-		   	{
-		   		var nbr = (abs+1)*10+(ord-1)+1;
-		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
-		   	}
-		   	if ((abs+1)<=9 && ord>=0)
-		   	{
-		   		var nbr = (abs+1)*10+ord+1;
-		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
-		   	}
-		   	if ((abs+1)<=9 && (ord+1)<=9)
-		   	{
-		   		var nbr = (abs+1)*10+(ord+1)+1;
-		   		if (table.indexOf(nbr) ==-1)
-		   		grille[nbr].indice++;
-		   	}
+		    x = cellule.abs;
+		    y = cellule.ord;
+		    displayIndice(x-1,y-1);
+		    displayIndice(x-1,y);
+		    displayIndice(x-1,y+1);
+		    displayIndice(x,y-1);
+		    displayIndice(x,y+1);
+		    displayIndice(x+1,y-1);
+		    displayIndice(x+1,y);
+		    displayIndice(x+1,y+1);
 		}
 	  	numero++;
 	}
@@ -157,12 +156,12 @@ $(document).ready(function(){
 	}
 
 	//Surcouche
-	var numero = 1;
-	while(numero<=taille)
-	{
-		grille[numero].createSurcouche(0x777777);
-		numero++;
-	}
+	// var numero = 1;
+	// while(numero<=taille)
+	// {
+	// 	grille[numero].createSurcouche(0x777777);
+	// 	numero++;
+	// }
 
 	
 

@@ -11,6 +11,7 @@ function Cell(x,y,couleur,numero)
 	this.carre;
 	this.surcouche;
 	this.createCell();
+}
 
 Cell.prototype =
 {

@@ -61,7 +61,7 @@ $(document).ready(function(){
 	var largeur = 10;
 	var longueur =  10;
 	var nbCases = largeur * longueur;
-	var nbMines;
+	var nbMines = 10;
 
 	//Initialisation de PIXI
 	var stage = new PIXI.Container();
@@ -81,16 +81,17 @@ $(document).ready(function(){
 	var table = [];
 	while (i<nbMines)
 	{
-		var nbr = getRandomInt();
+		var nbr = getRandomInt(nbCases);
 		if (table.indexOf(nbr) === -1)
 		{
 			table[i] = nbr;
 			i++;
 		}
 	}
+	console.log(table);
 
     //Remplissage de la grille avec les mines(initalisation)
-    var taille=100;
+    var taille=nbCases;
 	var ligne= taille/10;
 	var numero=1;
 	var x=0;
@@ -98,26 +99,26 @@ $(document).ready(function(){
 	var i=0;
 	var j=0;
 
-	while(i<ligne){
+	while(i<largeur){
 
-		while(j<ligne)
+		while(j<longueur)
 		{
 			//Création d'une case
 			var cellule = new Cell(x, y, 0x00FF00, numero);
 			if (table.indexOf(numero) !== -1)
 			{
-			    cellule.createImage('img/mine-noire.png');
+			    cellule.createImage('img/mine-noire2.png');
 			    cellule.indice = -1;
 			}
 		    stage.addChild(cellule.carre);
 	        grille[numero] = cellule;
 		  	numero++;
-			y=y+50;
+			y=y+20;
 			j++	;
 		}
 		y = 0;
 		j = 0;
-		x=x+50;
+		x=x+20;
 		i++;
 	}
 

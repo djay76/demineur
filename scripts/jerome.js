@@ -1,7 +1,12 @@
+
 var table = [];
 var grille = [];
 var largeur;
 var longueur;
+var nbMines;
+var compteur;
+var taille;
+
 // Générer dix nombres aléatoires différents
 function getRandomInt(nbCases)
 {
@@ -29,7 +34,7 @@ function destroyAll()
 		grille[numero].surcouche.visible = false;
 		numero++;
 	}
-	// $('.message')find('p').text("Perdu");
+	$('.message').find('p').text("Perdu");
 }
 
 //Découvrir les cases alentours quand une case est découverte
@@ -58,14 +63,18 @@ function cascade(x, y, checked)
 		}
 	}
 }
-
-$(document).ready(function(){
+//le jeu
+function start(){
+	$('#container').html('');
 	//Débutant : plateau 10*10 et 10 mines ; intermédiaire : plateau 16*16 et 40 mines; expert : plateau 22*22 et 90 mines
-	largeur = 10;
-	longueur = 10;
-	var taille = largeur * longueur;
-	var nbMines = 10;
-
+	if(largeur==undefined && longueur==undefined && nbMines==undefined)
+	{
+		largeur = 10;
+		longueur = 10;
+		taille = largeur * longueur;
+		nbMines = 10;
+	}
+	
 	//Initialisation de PIXI
 	var stage = new PIXI.Container();
 	var renderer = PIXI.autoDetectRenderer(20*largeur,20*longueur);
@@ -78,6 +87,7 @@ $(document).ready(function(){
     	requestAnimationFrame( animate );
         renderer.render(stage);
     }
+
 
     //Sélection des cases pour placer les mines
 	var i = 0;
@@ -166,4 +176,34 @@ $(document).ready(function(){
 		grille[numero].createSurcouche(0x777777);
 		numero++;
 	}
+};
+
+$(document).ready(function(){
+//Choix de la taille du plateau de jeu
+$('#debutant').off('click').click (function(){
+	largeur = 10;
+	longueur = 10;
+	taille = largeur * longueur;
+	nbMines = 10;
+	start();
+});
+$('#intermediaire').off('click').click (function(){
+	largeur = 16;
+	longueur = 16;
+	taille = largeur * longueur;
+	nbMines = 40;
+	start();
+});
+$('#pro').off('click').click (function(){
+	largeur = 22;
+	longueur = 22;
+	taille = largeur * longueur;
+	nbMines = 90;
+	start();
+});
+
+$('.new').off('click').click (function(){
+	start();
+});
+
 });

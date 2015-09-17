@@ -118,7 +118,8 @@ Cell.prototype =
 	    		self.toggleImage(flag);
 	    	}
 	    	//Gagné ?
-	    	gagne();
+	    	if ($('.message').find('p').text() !== "Perdu" )
+	    		gagne();
 	    };
 	}
 }

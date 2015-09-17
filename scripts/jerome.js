@@ -1,7 +1,7 @@
 var table = [];
 var grille = [];
-var largeur = 0;
-var longueur = 0;
+var largeur;
+var longueur;
 // Générer dix nombres aléatoires différents
 function getRandomInt(nbCases)
 {
@@ -29,6 +29,7 @@ function destroyAll()
 		grille[numero].surcouche.visible = false;
 		numero++;
 	}
+	// $('.message')find('p').text("Perdu");
 }
 
 //Découvrir les cases alentours quand une case est découverte
@@ -60,8 +61,8 @@ function cascade(x, y, checked)
 
 $(document).ready(function(){
 	//Débutant : plateau 10*10 et 10 mines ; intermédiaire : plateau 16*16 et 40 mines; expert : plateau 22*22 et 90 mines
-	var largeur = 10;
-	var longueur = 10;
+	largeur = 10;
+	longueur = 10;
 	var taille = largeur * longueur;
 	var nbMines = 10;
 
@@ -123,6 +124,7 @@ $(document).ready(function(){
 		ord=0;
 		i++;
 	}
+	console.log(grille[45]);
 	//Incrémentation des numéros indice
 	var numero=1;
 	while(numero<=taille)

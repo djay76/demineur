@@ -61,6 +61,7 @@ $(document).ready(function(){
 	var largeur = 10;
 	var longueur =  10;
 	var nbCases = largeur * longueur;
+	var nbMines;
 
 	//Initialisation de PIXI
 	var stage = new PIXI.Container();
@@ -78,7 +79,7 @@ $(document).ready(function(){
     //Sélection des cases pour placer les mines
 	var i = 0;
 	var table = [];
-	while (i<10)
+	while (i<nbMines)
 	{
 		var nbr = getRandomInt();
 		if (table.indexOf(nbr) === -1)

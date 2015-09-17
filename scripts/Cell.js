@@ -1,12 +1,14 @@
 //Objet définissant une case du démineur
-function Cell(x,y,couleur,numero)
+function Cell(x,y,couleur,numero,abs,ord)
 {
 	this.horizontal = x;
 	this.vertical = y;
 	this.couleur = couleur;
 	this.numero=numero;
-	this.ord=(numero-1)%10;
-	this.abs=((numero-1)%100-this.ord)/10;
+	this.abs=abs;
+	this.ord=ord;
+	// this.ord=(numero-1)%10;
+	// this.abs=((numero-1)%100-this.ord)/10;
 	this.indice = 0;
 	this.carre;
 	this.surcouche;

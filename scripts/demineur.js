@@ -78,8 +78,9 @@ function gagne()
 			numero++;
 		}
 	}
-	if (valid)
+	if (valid) 
 	{
+		
 		$('.message').find('p').text("Gagné");
 		destroyAll();
 	}
@@ -95,7 +96,9 @@ function start(){
 		taille = largeur * longueur;
 		nbMines = 10;
 	}
-	
+	compteur = nbMines;
+	$('.mines').text(compteur);
+
 	//Initialisation de PIXI
 	var stage = new PIXI.Container();
 	var renderer = PIXI.autoDetectRenderer(20*largeur,20*longueur);

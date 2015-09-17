@@ -29,7 +29,7 @@ function destroyAll()
 		grille[numero].surcouche.visible = false;
 		numero++;
 	}
-	// $('.message')find('p').text("Perdu");
+	$('.message').find('p').text("Perdu");
 }
 
 //Découvrir les cases alentours quand une case est découverte
@@ -60,6 +60,7 @@ function cascade(x, y, checked)
 }
 
 $(document).ready(function(){
+	
 	//Débutant : plateau 10*10 et 10 mines ; intermédiaire : plateau 16*16 et 40 mines; expert : plateau 22*22 et 90 mines
 	largeur = 10;
 	longueur = 10;

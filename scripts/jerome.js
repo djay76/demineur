@@ -34,7 +34,6 @@ function destroyAll()
 		grille[numero].surcouche.visible = false;
 		numero++;
 	}
-	$('.message').find('p').text("Perdu");
 }
 
 //Découvrir les cases alentours quand une case est découverte
@@ -61,6 +60,28 @@ function cascade(x, y, checked)
 			else (grille[nbr].indice > 0)
 				grille[nbr].surcouche.visible = false;
 		}
+	}
+}
+function gagne()
+{
+	var numero = 1;
+	var valid = true;
+	while(numero<=taille)
+	{
+		if (grille[numero].indice !== -1 && grille[numero].surcouche.visible == true)
+		{
+			valid = false;
+			return false;
+		}
+		else
+		{
+			numero++;
+		}
+	}
+	if (valid)
+	{
+		$('.message').find('p').text("Gagné");
+		destroyAll();
 	}
 }
 //le jeu
@@ -134,7 +155,6 @@ function start(){
 		ord=0;
 		i++;
 	}
-	console.log(grille[45]);
 	//Incrémentation des numéros indice
 	var numero=1;
 	while(numero<=taille)

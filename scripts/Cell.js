@@ -54,9 +54,22 @@ Cell.prototype =
 		if (image.visible)
 		{
 			image.visible = false;
+			if (compteur <= nbMines)
+			{
+				compteur++;
+			}
+			$('.mines').text(compteur);
 		}
 		else
+		{
 			image.visible = true;
+			if (compteur > 0)
+			{	
+				compteur--;
+			}
+			$('.mines').text(compteur);
+		}
+			
 	},
 
  	
@@ -81,6 +94,7 @@ Cell.prototype =
 	    this.surcouche.interactive = true;
 	    this.surcouche.mousedown = function(info)
 	    {
+
 	    	which = info.data.originalEvent.which;
 	    	if (which == 1)
 	    	{
@@ -90,6 +104,7 @@ Cell.prototype =
 				{
 					self.createImage('img/mine-rouge2.png');
 					destroyAll();
+					$('.message').find('p').text("Perdu");
 				}
  				else
  				{
@@ -102,7 +117,8 @@ Cell.prototype =
 	    	{
 	    		self.toggleImage(flag);
 	    	}
-
+	    	//Gagné ?
+	    	gagne();
 	    };
 	}
 }

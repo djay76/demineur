@@ -2,8 +2,8 @@ var table = [];
 var grille = [];
 var largeur;
 var longueur;
-var compteur=10;
-var nbMines=10;
+var compteur;
+var nbMines;
 var taille;
 // Générer dix nombres aléatoires différents
 function getRandomInt(nbCases)

@@ -33,7 +33,7 @@ var grille=[];
 $(document).ready(function(){
 	//Initialisation de PIXI
 	var stage = new PIXI.Container();
-	var renderer = PIXI.autoDetectRenderer(500,500);
+	var renderer = PIXI.autoDetectRenderer(200,200);
 	renderer.backgroundColor = 0x888888;
 	var content = document.getElementById("container");
 	container.appendChild(renderer.view);
@@ -80,7 +80,7 @@ $(document).ready(function(){
 			var cellule = new Cell(x, y, 0x00FF00, numero);
 			if (table.indexOf(numero) !== -1)
 			{
-			    cellule.createImage('img/mine-noire.png');
+			    cellule.createImage('img/mine-noire2.png');
 			    cellule.indice=-1;
 	            
 			}
@@ -88,12 +88,12 @@ $(document).ready(function(){
 		    stage.addChild(cellule.carre);
 	        grille[numero] = cellule;
 		  	numero++;
-			y=y+50;
+			y=y+20;
 			j++	;
 		}
 		y = 0;
 		j = 0;
-		x=x+50;
+		x=x+20;
 		i++;
 	}
 ///couche indice	

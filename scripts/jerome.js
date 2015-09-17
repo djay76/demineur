@@ -1,9 +1,9 @@
 var table = [];
 var grille = [];
 // Générer dix nombres aléatoires différents
-function getRandomInt()
+function getRandomInt(nbCases)
 {
-	return Math.floor(Math.random()*100+1);
+	return Math.floor(Math.random()*nbCases+1);
 }
 
 //Générer les nombres indices d'une case
@@ -57,9 +57,14 @@ function cascade(x, y, checked)
 }
 
 $(document).ready(function(){
+	//Débutant : plateau 10*10 et 10 mines ; intermédiaire : plateau 16*16 et 40 mines; expert : plateau 30*16 et 100 mines
+	var largeur = 10;
+	var longueur =  10;
+	var nbCases = largeur * longueur;
+
 	//Initialisation de PIXI
 	var stage = new PIXI.Container();
-	var renderer = PIXI.autoDetectRenderer(500,500);
+	var renderer = PIXI.autoDetectRenderer(20*largeur,20*longueur);
 	renderer.backgroundColor = 0x888888;
 	var container = document.getElementById("container");
 	container.appendChild(renderer.view);
@@ -70,7 +75,7 @@ $(document).ready(function(){
         renderer.render(stage);
     }
 
-    //Sélection de dix cases pour placer les mines
+    //Sélection des cases pour placer les mines
 	var i = 0;
 	var table = [];
 	while (i<10)
@@ -150,13 +155,10 @@ $(document).ready(function(){
 	}
 
 	//Surcouche
-	// var numero = 1;
-	// while(numero<=taille)
-	// {
-	// 	grille[numero].createSurcouche(0x777777);
-	// 	numero++;
-	// }
-
-	
-
+	var numero = 1;
+	while(numero<=taille)
+	{
+		grille[numero].createSurcouche(0x777777);
+		numero++;
+	}
 });

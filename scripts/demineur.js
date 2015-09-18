@@ -110,7 +110,8 @@ function start(){
 	requestAnimationFrame(animate);
     function animate() {
     	requestAnimationFrame( animate );
-        renderer.render(stage);
+        renderer.
+        render(stage);
     }
 
 

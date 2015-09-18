@@ -88,7 +88,7 @@ function gagne()
 //le jeu
 function start(){
 	$('#container').html('');
-	$('.message').find('p').text("Cherchez les mines");
+	$('.message').find('p').text('');
 	//Débutant : plateau 10*10 et 10 mines ; intermédiaire : plateau 16*16 et 40 mines; expert : plateau 22*22 et 90 mines
 	if(largeur==undefined && longueur==undefined && nbMines==undefined)
 	{
@@ -110,8 +110,7 @@ function start(){
 	requestAnimationFrame(animate);
     function animate() {
     	requestAnimationFrame( animate );
-        renderer.
-        render(stage);
+        renderer.render(stage);
     }
 
 

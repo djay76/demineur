@@ -123,6 +123,8 @@ Cell.prototype =
     	{
     		self.toggleImage(flag);
     		renderer.render(stage);
+    		
     	};
+
 	}
 }

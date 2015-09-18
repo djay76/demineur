@@ -203,7 +203,6 @@ function start(){
 };
 
 $(document).ready(function(){
-
 	//Désactiver le menu contextuel
 	document.oncontextmenu = function()
 	{

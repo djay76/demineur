@@ -113,8 +113,9 @@ Cell.prototype =
  				}
 
 	    	}
+	    	//Gagné ?
 	    	if ($('.message').find('p').text() !== "Perdu" )
-	    		gagne();
+	    	gagne();
 	    };
 	    this.surcouche.rightdown = function()
     	{

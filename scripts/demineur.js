@@ -53,7 +53,7 @@ function cascade(x, y, checked)
 	    		cascade(x + 1, y - 1, checked);
 	    		cascade(x, y + 1, checked);
 	    		cascade(x - 1, y + 1, checked);
-	    		cascade(x + 1, y + 1, checked);
+	    		cascade(x - 1, y, checked);
 	    		cascade(x - 1, y - 1, checked);
 	    		cascade(x, y - 1, checked);
 			}
@@ -88,6 +88,7 @@ function gagne()
 //le jeu
 function start(){
 	$('#container').html('');
+	$('.message').find('p').text('');
 	//Débutant : plateau 10*10 et 10 mines ; intermédiaire : plateau 16*16 et 40 mines; expert : plateau 22*22 et 90 mines
 	if(largeur==undefined && longueur==undefined && nbMines==undefined)
 	{
@@ -150,6 +151,7 @@ function start(){
 			y=y+20;
 			ord++;
 			j++	;
+			console.log("ord :"+ord);
 		}
 		y = 0;
 		j = 0;
@@ -157,6 +159,7 @@ function start(){
 		abs++;
 		ord=0;
 		i++;
+		console.log('abs : '+abs);
 	}
 	//Incrémentation des numéros indice
 	var numero=1;
@@ -202,6 +205,13 @@ function start(){
 };
 
 $(document).ready(function(){
+//empecher le menu contextuel d'apparaitre
+$(document).on('contextmenu', function()
+{
+		return false;
+});
+
+start();
 //Choix de la taille du plateau de jeu
 $('#debutant').off('click').click (function(){
 	largeur = 10;

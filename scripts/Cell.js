@@ -113,13 +113,15 @@ Cell.prototype =
  				}
 
 	    	}
-	    	else if (which == 2)
-	    	{
-	    		self.toggleImage(flag);
-	    	}
-	    	//Gagné ?
+	    		//Gagné ?
 	    	if ($('.message').find('p').text() !== "Perdu" )
-	    		gagne();
+	    	gagne();
 	    };
+	    
+	    this.surcouche.rightdown = function(info)
+    	{
+    		self.toggleImage(flag);
+    	};
+	    
 	}
 }

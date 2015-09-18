@@ -53,7 +53,7 @@ function cascade(x, y, checked)
 	    		cascade(x + 1, y - 1, checked);
 	    		cascade(x, y + 1, checked);
 	    		cascade(x - 1, y + 1, checked);
-	    		cascade(x + 1, y + 1, checked);
+	    		cascade(x - 1, y, checked);
 	    		cascade(x - 1, y - 1, checked);
 	    		cascade(x, y - 1, checked);
 			}
@@ -88,6 +88,7 @@ function gagne()
 //le jeu
 function start(){
 	$('#container').html('');
+	$('.message').find('p').text("Cherchez les mines");
 	//Débutant : plateau 10*10 et 10 mines ; intermédiaire : plateau 16*16 et 40 mines; expert : plateau 22*22 et 90 mines
 	if(largeur==undefined && longueur==undefined && nbMines==undefined)
 	{
@@ -202,31 +203,39 @@ function start(){
 };
 
 $(document).ready(function(){
-//Choix de la taille du plateau de jeu
-$('#debutant').off('click').click (function(){
-	largeur = 10;
-	longueur = 10;
-	taille = largeur * longueur;
-	nbMines = 10;
-	start();
-});
-$('#intermediaire').off('click').click (function(){
-	largeur = 16;
-	longueur = 16;
-	taille = largeur * longueur;
-	nbMines = 40;
-	start();
-});
-$('#pro').off('click').click (function(){
-	largeur = 22;
-	longueur = 22;
-	taille = largeur * longueur;
-	nbMines = 90;
-	start();
-});
 
-$('.new').off('click').click (function(){
+	//Désactiver le menu contextuel
+	document.oncontextmenu = function()
+	{
+		return false;
+	};
+
 	start();
-});
+	//Choix de la taille du plateau de jeu
+	$('#debutant').off('click').click (function(){
+		largeur = 10;
+		longueur = 10;
+		taille = largeur * longueur;
+		nbMines = 10;
+		start();
+	});
+	$('#intermediaire').off('click').click (function(){
+		largeur = 16;
+		longueur = 16;
+		taille = largeur * longueur;
+		nbMines = 40;
+		start();
+	});
+	$('#pro').off('click').click (function(){
+		largeur = 22;
+		longueur = 22;
+		taille = largeur * longueur;
+		nbMines = 90;
+		start();
+	});
+
+	$('.new').off('click').click (function(){
+		start();
+	});
 
 });

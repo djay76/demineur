@@ -6,7 +6,9 @@ var longueur;
 var nbMines;
 var compteur;
 var taille;
-
+var renderer;
+var stage;
+var container;
 // Générer dix nombres aléatoires différents
 function getRandomInt(nbCases)
 {
@@ -82,6 +84,7 @@ function gagne()
 	{
 		
 		$('.message').find('p').text("Gagné");
+		$('message').find('p').css("color","#00FF00");
 		destroyAll();
 	}
 }
@@ -101,18 +104,11 @@ function start(){
 	$('.mines').text(compteur);
 
 	//Initialisation de PIXI
-	var stage = new PIXI.Container();
-	var renderer = PIXI.autoDetectRenderer(20*largeur,20*longueur);
+	stage = new PIXI.Container();
+	renderer = PIXI.autoDetectRenderer(20*largeur,20*longueur);
 	renderer.backgroundColor = 0x888888;
-	var container = document.getElementById("container");
+	container = document.getElementById("container");
 	container.appendChild(renderer.view);
-	
-	requestAnimationFrame(animate);
-    function animate() {
-    	requestAnimationFrame( animate );
-        renderer.render(stage);
-    }
-
 
     //Sélection des cases pour placer les mines
 	var i = 0;
@@ -144,6 +140,7 @@ function start(){
 			{
 			    cellule.createImage('img/mine-noire2.png');
 			    cellule.indice = -1;
+			    renderer.render(stage);
 			}
 		    stage.addChild(cellule.carre);
 	        grille[numero] = cellule;
@@ -151,7 +148,6 @@ function start(){
 			y=y+20;
 			ord++;
 			j++	;
-			console.log("ord :"+ord);
 		}
 		y = 0;
 		j = 0;
@@ -159,8 +155,9 @@ function start(){
 		abs++;
 		ord=0;
 		i++;
-		console.log('abs : '+abs);
 	}
+	renderer.render(stage);
+	
 	//Incrémentation des numéros indice
 	var numero=1;
 	while(numero<=taille)
@@ -194,7 +191,7 @@ function start(){
 		}
 		numero++;
 	}
-
+	renderer.render(stage);
 	//Surcouche
 	var numero = 1;
 	while(numero<=taille)
@@ -202,6 +199,7 @@ function start(){
 		grille[numero].createSurcouche(0x777777);
 		numero++;
 	}
+	renderer.render(stage);
 };
 
 $(document).ready(function(){

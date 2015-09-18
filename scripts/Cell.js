@@ -105,23 +105,25 @@ Cell.prototype =
 					self.createImage('img/mine-rouge2.png');
 					destroyAll();
 					$('.message').find('p').text("Perdu");
+					$('.message').find('p').css("color","#D90505");
 				}
  				else
  				{
 	 				this.visible = false;
 	 				cascade(self.abs,self.ord,[]);
  				}
-
+ 				renderer.render(stage);
 	    	}
 	    		//Gagné ?
 	    	if ($('.message').find('p').text() !== "Perdu" )
 	    	gagne();
 	    };
 	    
-	    this.surcouche.rightdown = function(info)
+	    this.surcouche.rightdown = function()
     	{
     		self.toggleImage(flag);
+    		renderer.render(stage);
     	};
-	    
+	   
 	}
 }
